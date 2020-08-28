@@ -1,0 +1,13 @@
+---
+- hosts: nginx
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: copy nginx.conf
+    copy:
+      src: /etc/nginx/nginx.conf
+      dest: /etc/nginx/nginx.conf
+      owner: vagrant   
+  - service:
+     name: nginx
+     state: restarted

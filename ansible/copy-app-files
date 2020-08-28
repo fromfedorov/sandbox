@@ -1,0 +1,10 @@
+---
+- hosts: workers
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: copy app file
+    copy:
+      src: /home/vagrant/app/
+      dest: /home/vagrant/app/
+      owner: vagrant   

@@ -1,0 +1,15 @@
+---
+- hosts: workers
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: setup docker
+    yum:
+      name: docker
+      state: latest
+  - service:
+      name: docker
+      state: started
+    become: yes
+    become_method: sudo
+    

@@ -1,0 +1,2 @@
+db.help
+db.restaurants.find().limit( 1 ).pretty()

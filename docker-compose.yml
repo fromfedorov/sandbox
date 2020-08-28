@@ -1,0 +1,30 @@
+---
+version: '2'
+services:
+
+    postgresql:
+      image: postgres
+      ports:
+      - "5432:5432"
+      environment:
+        POSTGRES_PASSWORD: pass.1
+
+    keycloak:
+      image: quay.io/keycloak/keycloak:11.0.1
+      ports:
+      - "8080:8080"
+
+    mongo:
+      image: mongo:latest
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: pass.1
+
+    mongo-express:
+      image: mongo-express
+      restart: always
+      ports:
+      - "8081:8081"
+      environment:
+        ME_CONFIG_MONGODB_ADMINUSERNAME: root
+        ME_CONFIG_MONGODB_ADMINPASSWORD: example

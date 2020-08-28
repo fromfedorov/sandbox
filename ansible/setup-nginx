@@ -1,0 +1,18 @@
+---
+- hosts: nginx
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: setup docker
+    yum:
+      name: epel-release
+      state: latest
+    yum:
+      name: nginx
+      state: latest
+  - service:
+      name: nginx
+      state: started
+    become: yes
+    become_method: sudo
+    
